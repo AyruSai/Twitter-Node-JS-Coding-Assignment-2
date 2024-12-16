@@ -1,0 +1,71 @@
+Tests for Operations on Twitter Clone database
+
+Total:34
+
+1. An Express instance should be exported from the 'app.js' file using the default export syntax
+
+2. The POST request with path '/register/' should return 'User already exists' as a response if the username already exists 
+
+3. A user should not be created if the username already exists in database
+ 
+4. The POST request with path '/register/' should return 'Password is too short' as a response if the registrant provides a password with less than 6 characters
+
+5. The POST request with path '/register/' should return 'User created successfully' text as a response for a successful registration
+ 
+6. The password should be encrypted before creating a user in the database
+ 
+7. The user should be created in the database upon the success of the request with path '/register/'
+
+8. The POST request with path '/login/' should return 'Invalid user' text as a response for an unregistered user
+ 
+9. The POST request with path '/login/' should return 'Invalid password' text as a response if the user provides an incorrect password
+ 
+10. The POST request with path '/login/' should return 'JWT Token' as a response if the user provides correct credentials
+ 
+11. The GET request to the path '/user/tweets/feed/' with invalid JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+
+12. The GET request to the path '/user/tweets/feed/' with valid JWT token should return the latest 4 tweets of people whom the user follows
+ 
+13. The GET request to the path '/user/following/' without JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+ 
+14. The GET request to the path '/user/following/' with valid JWT token should return the list of all names of people whom the user follows
+ 
+15. The GET request to the path '/user/followers/' without JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+ 
+16. The GET request to the path '/user/followers/' with valid JWT token should return the list of all names of people who follows the user
+ 
+17. The GET request to the path '/user/tweets/' without JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+ 
+18. The GET request to the path '/user/tweets/' with valid JWT token should return the list of all tweets of the user
+ 
+19. The GET request to the path '/tweets/:tweetId/' without JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+ 
+20. The GET request to the path '/tweets/:tweetId/' with valid JWT token should return the `Invalid Request` text if the user requests a tweet other than the users he is following
+ 
+21. The GET request to the path '/tweets/:tweetId/' with valid JWT token should return the tweet
+ 
+22. The GET request to the path '/tweets/:tweetId/likes/' without JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+
+23. The GET request to the path '/tweets/:tweetId/likes/' with valid JWT token should return the `Invalid Request` text if the user requests a tweet other than the users he is following
+
+24. The GET request to the path '/tweets/:tweetId/likes/' with valid JWT token and should return the list of usernames who liked the tweet
+ 
+25. The GET request to the path '/tweets/:tweetId/replies/' without JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+
+26. The GET request to the path '/tweets/:tweetId/replies/' with valid JWT token should return the `Invalid Request` text if the user requests a tweet other than the users he is following
+ 
+27. The GET request to the path '/tweets/:tweetId/replies/' with valid JWT token and should return tweet and the list of all replies
+ 
+28. The POST request to the path '/user/tweets/' without JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+ 
+29. The POST request to the path '/user/tweets/' with valid JWT token should return `Created a Tweet` text as a response upon success
+ 
+30. The database should be updated upon the successful post request
+ 
+31. The DELETE request to the path 'tweets/:tweetId/' without JWT token should return status code as '401' and 'Invalid JWT Token' text as a response
+ 
+32. The DELETE request to the path 'tweets/:tweetId/' with valid JWT token should return status code as '401' and 'Invalid Request' if the tweet doesn't belong to the user
+ 
+33. The DELETE request to the path 'tweets/:tweetId' with valid JWT token should return `Tweet Removed` text as a response upon success
+ 
+34. The database should be updated upon the successful delete request
