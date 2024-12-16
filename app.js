@@ -27,6 +27,52 @@ const initializeDbAndServer = async () => {
 };
 initializeDbAndServer();
 
+const convertUserDetailsToResponseObject = (dbObject) => {
+  return {
+    userId: dbObject.user_id,
+    name: dbObject.name,
+    username: dbObject.username,
+    password: dbObject.password,
+    gender: dbObject.gender,
+  };
+};
+
+const convertFollowerDetailsToResponseObject = (dbObject) => {
+  return {
+    followerId: dbObject.follower_id,
+    followerUserId: dbObject.follower_user_id,
+    followingUserId: dbObject.following_user_id,
+  };
+};
+
+const convertTweetDetailsToResponseObject = (dbObject) => {
+  return {
+    tweetId: dbObject.tweet_id,
+    tweet: dbObject.tweet,
+    userId: dbObject.user_id,
+    dateTime: dbObject.date_time,
+  };
+};
+
+const convertReplyDetailsToResponseObject = (dbObject) => {
+  return {
+    replyId: dbObject.reply_id,
+    tweetId: dbObject.tweet_id,
+    reply: dbObject.reply,
+    userId: dbObject.user_id,
+    dateTime: dbObject.date_time,
+  };
+};
+
+const convertLikeDetailsToResponseObject = (dbObject) => {
+  return {
+    likeId: dbObject.like_id,
+    tweetId: dbObject.tweet_id,
+    userId: dbObject.user_id,
+    dateTime: dbObject.date_time,
+  };
+};
+
 function authenticateToken(request, response, next) {
   let jwtToken;
   const authHeader = request.headers["authorization"];
